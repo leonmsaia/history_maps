@@ -22,7 +22,7 @@
 				</div>
 				<div class="col-md-11">
 					<h1 style="text-align: center;">
-						<?php echo $map_project_data->result()[0]->map_project_title;?>: 
+						<?php echo $map_project_data->result()[0]->map_project_title;?>:
 						<?php echo $current_map_title;?>
 					</h1>
 				</div>
@@ -78,7 +78,7 @@
 			<p style="text-align: center;">Desarrollado por Leonardo Saia, para la Universidad Nacional de General Sarmiento. 2021</p>
 		</div>
 	</div>
-	
+
 </div>
 
 
@@ -101,7 +101,7 @@
 
 		<?php $flag_poi = 0;?>
 		<?php foreach ($map_unit_list_assets_poi->result() as $poi_data): ?>
-			
+
 			var lat_marker_<?php echo $flag_poi;?> = <?php echo $poi_data->map_assets_poi_lat; ?>;
 			var lng_marker_<?php echo $flag_poi;?> = <?php echo $poi_data->map_assets_poi_lng; ?>;
 			var marker_title_<?php echo $flag_poi;?> = "<?php echo $poi_data->map_assets_poi_title; ?>";
@@ -128,7 +128,7 @@
 
 		<?php $flag_poi++; ?>
 		<?php endforeach ?>
-		
+
 
 
 	}
@@ -169,7 +169,7 @@
 					<?php echo $poi_data_set->map_assets_poi_txt;?>
 
 					<?php if ($poi_data_set->map_assets_poi_youtube != NULL): ?>
-						<iframe class="youtube_holder" width="100%" height="720" src="https://www.youtube.com/embed/<?php echo $poi_data_set->map_assets_poi_youtube ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>						
+						<iframe class="youtube_holder" width="100%" height="720" src="https://www.youtube.com/embed/<?php echo $poi_data_set->map_assets_poi_youtube ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					<?php endif ?>
 				</div>
 				<div class="modal-footer">

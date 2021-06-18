@@ -8,6 +8,27 @@ class MapView extends CI_Controller {
 
 	}
 
+	public function index() {
+		// Initials Vars
+
+		// Models Loading
+		$this->load->model('Map_model');
+
+		// Classes Init
+		$data['projects_data'] = $this->Map_model->get_all_projects_list();
+
+		// Template Information
+		$data['layout'] = 'basic';
+		$data['page'] = 'ViewMap/allProjects';
+
+		// Page Information
+		$data['title'] = 'Listado de Proyectos';
+
+		// Data for Rendering
+
+		$this->load->view('layout/' . $data['layout'], $data);
+	}
+
 	public function project($project_code) {
 
 		// Initials Vars
@@ -30,7 +51,7 @@ class MapView extends CI_Controller {
 		$data['title'] = 'Ver Mapa';
 
 		// Data for Rendering
-		
+
 		$this->load->view('layout/' . $data['layout'], $data);
 	}
 
@@ -56,7 +77,7 @@ class MapView extends CI_Controller {
 		$data['title'] = 'Editar Mapa';
 
 		// Data for Rendering
-		
+
 		$this->load->view('layout/' . $data['layout'], $data);
 	}
 

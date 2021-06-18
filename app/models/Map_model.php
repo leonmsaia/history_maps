@@ -3,6 +3,12 @@
 class Map_model extends CI_Model
 {
 
+  public function get_all_projects_list()
+  {
+      $result = $this->db->get('map_project');
+      return $result;
+  }
+
   public function get_map_project_class_by_id($map_project_id)
   {
     $this->db->where('map_project_id', $map_project_id);
