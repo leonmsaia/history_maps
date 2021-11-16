@@ -8,84 +8,46 @@
 	}
 ?>
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<h1 style="text-align: center;">Sistema Interactivo de Visualización de Mapas Historicos</h1>
+
+<div class="col s12">
+	<div class="widget z-depth-1">
+		<div class="loader"></div>
+		<div class="widget-title">
+			<h3><?php echo $map_project_data->result()[0]->map_project_title;?>:</h3>
+			<p><?php echo $current_map_title;?></p>
+			<a class="options dropdown-button waves-effect" href="#" title="" data-activates='dropdown4'><i class="ti-more-alt"></i></a>
+			<ul id='dropdown4' class='dropdown-content'>
+				<li><a class="rld" href="#!" title="">Recargar</a></li>
+				<li><a class="fl-scr" href="#!" title="">Pantalla Completa</a></li>
+			</ul>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="row">
-				<div class="col-md-1">
-					<h3 style="text-align: center;">Listado de Mapas</h3>
-				</div>
-				<div class="col-md-11">
-					<h1 style="text-align: center;">
-						<?php echo $map_project_data->result()[0]->map_project_title;?>:
-						<?php echo $current_map_title;?>
-					</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-1">
-			<div class="row">
-				<?php foreach ($map_unit_list_data->result() as $unit_render): ?>
-					<div class="col-md-12">
-						<button type="button" class="btn btn-outline-info" style="width: 100%;">
-							<?php echo $unit_render->map_unit_title;?>
-						</button>
-					</div>
-				<?php endforeach ?>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<h3>Leyenda</h3>
-					<ul class="legend_poi_map">
-						<?php foreach ($map_unit_list_assets_poi->result() as $legend_elemnt): ?>
-							<li><?php echo $legend_elemnt->map_assets_poi_title;?></li>
-						<?php endforeach ?>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-11">
-			<div id="map" style="position: relative;width: 100%;height: 80vh;"></div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-1"></div>
-		<div class="col-md-11">
-			<div class="row">
-				<div class="col-md-10">
-					<audio controls style="width: 100%;float: left;">
-					  <source src="horse.ogg" type="audio/ogg">
-					  <source src="horse.mp3" type="audio/mpeg">
-					Your browser does not support the audio element.
-					</audio>
-				</div>
-				<div class="col-md-2">
-					<button type="button" class="btn btn-outline-info">Descargar Audio</button>
-					<button type="button" class="btn btn-outline-info">Bibliografia</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<p style="text-align: center;">Desarrollado por Leonardo Saia, para la Universidad Nacional de General Sarmiento. 2021</p>
+		<div class="map">
+			<div id="map" style="position: relative; width: 100%; height: 80vh;"></div>
 		</div>
 	</div>
 
+	<div class="widget z-depth-1">
+		<div class="loader"></div>
+		<div class="widget-title">
+			<h3>Soporte</h3>
+			<p>Archivo de Audio y Bibliografia</p>
+		</div>
+		<div class="col s12">
+			<audio controls style="width: 100%;float: left;">
+				<source src="horse.ogg" type="audio/ogg">
+				<source src="horse.mp3" type="audio/mpeg">
+				Your browser does not support the audio element.
+			</audio>
+		</div>
+		<div class="col s12">
+			<button type="button" class="btn btn-outline-info">Descargar Audio</button>
+			<button type="button" class="btn btn-outline-info">Bibliografia</button>
+		</div>
+	</div>
 </div>
-
-
 
 <script>
 	function init_map() {
-
 		var lat = <?php echo $current_map_lat;?>;
 		var lng = <?php echo $current_map_lon;?>;
 		var zoom = <?php echo $current_map_zoom;?>;

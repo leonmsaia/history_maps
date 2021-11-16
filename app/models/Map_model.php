@@ -5,6 +5,7 @@ class Map_model extends CI_Model
 
   public function get_all_projects_list()
   {
+      $this->db->join('users', 'users.id = map_project.map_project_author');
       $result = $this->db->get('map_project');
       return $result;
   }

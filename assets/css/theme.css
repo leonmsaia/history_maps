@@ -6,5 +6,32 @@
 }
 
 .youtube_holder {
-    margin-top: 20px;
+  margin-top: 20px;
+}
+
+.copy_holder {
+	display: table;
+	width: 100%;
+	float: left;
+	margin-top: 4em;
+	padding: 0 1em;
+	font-size: 0.7em;
+	text-align: center;
+	font-family: monospace;
+}
+
+.copy_holder a {
+	font-size: 1em !important;
+	color: #EF5350 !important;
+}
+
+.topbar {
+  z-index: 4;
+}
+
+.map {
+    float: left;
+    width: 100%;
+    z-index: 0;
+    position: relative;
 }
