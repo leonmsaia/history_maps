@@ -6,10 +6,9 @@
         <h2><?php echo $usr_nfo->first_name . ' ' . $usr_nfo->last_name;?></h2>
         <a class="dropdown-button" href='#' title="" data-activates='dropdown2'>Opciones <i class="ti-angle-down"></i></a>
         <ul id='dropdown2' class='dropdown-content'>
-          <li><a href="#!">Configuracion</a></li>
-          <li><a href="#!">Perfil</a></li>
-          <li><a href="#!">Mis Comentarios</a></li>
-          <li><a href="#!">Mis Proyectos</a></li>
+          <li><a href="<?php echo base_url();?>user/config">Configuracion</a></li>
+          <li><a href="<?php echo base_url() . 'user/profile/' . $usr_nfo->username;?>">Perfil</a></li>
+          <li><a href="<?php echo base_url();?>user/my_projects">Mis Proyectos</a></li>
           <li class="divider"></li>
           <li><a href="<?php echo base_url();?>/User/logUserOut">Signout</a></li>
         </ul>

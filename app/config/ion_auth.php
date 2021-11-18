@@ -15,8 +15,8 @@ $config['min_rounds']     = 5;
 $config['max_rounds']     = 9;
 $config['salt_prefix']    = version_compare(PHP_VERSION, '5.3.7', '<') ? '$2a$' : '$2y$';
 
-$config['site_title']                 = 'Gubia';
-$config['admin_email']                = 'noreply@gubia.art';
+$config['site_title']                 = 'History Maps';
+$config['admin_email']                = 'noreply@history_maps.com';
 $config['default_group']              = 'members';
 $config['admin_group']                = 'admin';
 $config['identity']                   = 'email';

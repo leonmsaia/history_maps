@@ -5,16 +5,29 @@
 		$current_map_lon = $map_data->map_unit_center_lgn;
 		$current_map_zoom = $map_data->map_unit_center_zoom;
 		$current_map_maxzoom = $map_data->map_unit_center_zoom_max;
+		$current_map_project_id = $map_data->map_unit_project_id;
 	}
+	foreach ($map_author_data->result() as $atr) {
+		$author_name = $atr->first_name . ' ' . $atr->last_name;
+		$author_id = $atr->id;
+	}
+	$user_id = getMyID();
 ?>
 
+<?php if (checkIfAuthorAreTheSame($user_id, $current_map_project_id) == TRUE): ?>
+	<div class="col s12">
+		<div class="widget z-depth-1">
+			<a href="#" class="btn btn-outline-info">Editar Mapa</a>
+		</div>
+	</div>
+<?php endif; ?>
 
 <div class="col s12">
 	<div class="widget z-depth-1">
 		<div class="loader"></div>
 		<div class="widget-title">
-			<h3><?php echo $map_project_data->result()[0]->map_project_title;?>:</h3>
-			<p><?php echo $current_map_title;?></p>
+			<h3>Proyecto: <?php echo $map_project_data->result()[0]->map_project_title;?></h3>
+			<p>Autor: <?php echo $author_name;?> | Mapa: <?php echo $current_map_title;?></p>
 			<a class="options dropdown-button waves-effect" href="#" title="" data-activates='dropdown4'><i class="ti-more-alt"></i></a>
 			<ul id='dropdown4' class='dropdown-content'>
 				<li><a class="rld" href="#!" title="">Recargar</a></li>
@@ -41,10 +54,53 @@
 		</div>
 		<div class="col s12">
 			<button type="button" class="btn btn-outline-info">Descargar Audio</button>
-			<button type="button" class="btn btn-outline-info">Bibliografia</button>
+			<a href="#map_assets_component_biblos" class="btn btn-outline-info">Bibliografia</a>
 		</div>
 	</div>
+
+	<div id="map_assets_component_biblos" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<h4>Bibliografia Sugerida</h4>
+			<span>
+					<?php foreach ($map_unit_list_assets_components->result() as $cmpnt): ?>
+						<?php if ($cmpnt->map_assets_components_type == 1): ?>
+							<?php if ($cmpnt->map_assets_components_path != NULL): ?>
+								<a href="#">
+									<?php echo $cmpnt->map_assets_components_map_title;?>
+								</a>
+							<?php else: ?>
+								<?php echo $cmpnt->map_assets_components_map_title;?>
+							<?php endif; ?>
+							<br>
+						<?php endif; ?>
+					<?php endforeach; ?>
+			</span>
+		</div>
+		<div class="modal-footer">
+		</div>
+	</div>
+
+	<?php foreach ($map_unit_list_assets_poi->result() as $poi_data_set): ?>
+		<div id="poi_data_<?php echo $poi_data_set->map_assets_poi_id;?>" class="modal modal-fixed-footer">
+			<div class="modal-content">
+				<h4><?php echo $poi_data_set->map_assets_poi_title;?></h4>
+				<span>
+					<?php echo $poi_data_set->map_assets_poi_txt;?>
+				</span>
+				<?php if ($poi_data_set->map_assets_poi_youtube != NULL): ?>
+					<iframe class="youtube_holder" width="100%" height="720" src="https://www.youtube.com/embed/<?php echo $poi_data_set->map_assets_poi_youtube ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<?php endif ?>
+			</div>
+			<div class="modal-footer">
+			</div>
+		</div>
+	<?php endforeach ?>
+
+	<?php // $this->load->view('pages/ViewMap/modules/comments_module');?>
+
 </div>
+
+
 
 <script>
 	function init_map() {
@@ -108,36 +164,3 @@
 	});
 
 </script>
-
-<style>
-	.map_popup_stl {
-		margin-bottom: 50px;
-	}
-</style>
-
-<?php foreach ($map_unit_list_assets_poi->result() as $poi_data_set): ?>
-	<div class="modal fade" id="poi_data_<?php echo $poi_data_set->map_assets_poi_id;?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-scrollable modal-xl">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="staticBackdropLabel">
-						<?php echo $poi_data_set->map_assets_poi_title;?>
-					</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<?php echo $poi_data_set->map_assets_poi_txt;?>
-
-					<?php if ($poi_data_set->map_assets_poi_youtube != NULL): ?>
-						<iframe class="youtube_holder" width="100%" height="720" src="https://www.youtube.com/embed/<?php echo $poi_data_set->map_assets_poi_youtube ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					<?php endif ?>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-				</div>
-			</div>
-		</div>
-	</div>
-<?php endforeach ?>

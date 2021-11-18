@@ -4,16 +4,16 @@
     <?php $this->load->view('layout/modules/general_elements/login_sidebar_module');?>
 
     <nav class="admin-nav">
-      <ul>
+      <ul class="credit_legend">
         <li>
           <span class="copy_holder">
-            Desarrollado por Leonardo Saia.
+            Desarrollado por <a href="https://www.linkedin.com/in/leonmsaia/" target="_blank">Leonardo Saia</a>
             <br>
-            Año 2021.
+            En el Año 2021.
             <br>
-            Catedra Elementos.
+            Catedra EPHOHAYA.
             <br>
-            Universidad Nacional de General Sarmiento
+            <a href="https://www.ungs.edu.ar/" target="_blank">Universidad Nacional de General Sarmiento</a>
             <br><br>
             Codigo Libre, Abierto, Publico y Gratuito.
             <br><br>

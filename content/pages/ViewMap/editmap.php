@@ -7,238 +7,157 @@
 		$current_map_maxzoom = $map_data->map_unit_center_zoom_max;
 		$current_map_ID = $map_data->map_unit_id;
 	}
-
 	$map_project_code = $map_project_data->result()[0]->map_project_code;
 ?>
 
-<div class="container-fluid">
-	
 
-
-	<div class="row">
-		<div class="col-md-12">
-			<h1 style="text-align: center;">Sistema Interactivo de Visualización de Mapas Historicos</h1>
-		</div>
-	</div>	
+<div class="col s12">
 
 	<div class="row">
-		<div class="col-md-12">
-			<h1 style="text-align: center;">
-				<?php echo $map_project_data->result()[0]->map_project_title;?>: 
-				<?php echo $current_map_title;?>
-			</h1>
-		</div>
+			<div class="col s12">
+					<div class="widget z-depth-1">
+							<div class="loader"></div>
+							<div class="widget-title">
+									<h3>Edicion de Proyecto: <?php echo $map_project_data->result()[0]->map_project_title;?></h3>
+									<p>Mapa:<?php echo $current_map_title;?></p>
+									<a class="options dropdown-button waves-effect" href="#" title="" data-activates='dropdown3'><i class="ti-more-alt"></i></a>
+							</div>
+					</div>
+			</div>
 	</div>
 
-
-
 	<div class="row">
-		<div class="col-md-4">
-			<div class="row">
-				<div class="col-md-12">
-					<h3 style="text-align: center;">Listado de Mapas</h3>
-					<ul>
-						<?php foreach ($map_unit_list_data->result() as $unit_render): ?>
-							<li>
-								<i><?php echo $unit_render->map_unit_title;?></i>
-								<a href="#">Ver</a>
-								<a href="#">Editar</a>
-								<a href="#">Borrar</a>
-							</li>
-						<?php endforeach ?>
-					</ul>
+			<div class="col s2">
+				<div class="widget z-depth-1">
+						<div class="loader"></div>
+						<div class="widget-title">
+								<h3>Listado de Mapas</h3>
+								<a class="options dropdown-button waves-effect" href="#" title="" data-activates='dropdown3'><i class="ti-more-alt"></i></a>
+						</div>
+						<div class="col s12">
+							<ul>
+								<?php foreach ($map_unit_list_data->result() as $unit_render): ?>
+									<li>
+										<i><?php echo $unit_render->map_unit_title;?></i>
+										<a href="#">Ver</a>
+										<a href="#">Editar</a>
+										<a href="#">Borrar</a>
+									</li>
+								<?php endforeach ?>
+							</ul>
+						</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
+			<div class="col s10">
+				<div class="widget z-depth-1">
+						<div class="loader"></div>
+						<div class="widget-title">
+								<h3>Opciones</h3>
+								<a class="options dropdown-button waves-effect" href="#" title="" data-activates='dropdown3'><i class="ti-more-alt"></i></a>
+						</div>
+						<div class="col s12">
+							<div class="row">
+								<div class="col s12">
+									<ul class="tabs">
+										<li class="tab col s3"><a href="#project_config">Configuración del Proyecto</a></li>
+										<li class="tab col s3"><a href="#map_config">Configuración del Mapa</a></li>
+										<li class="tab col s2"><a class="active" href="#poi_config">Puntos de Interes</a></li>
+										<li class="tab col s2"><a href="#lines_config">Lineas</a></li>
+										<li class="tab col s2"><a href="#draw_areas_config">Areas de Dibujo</a></li>
+									</ul>
+								</div>
+								<span class="project_manager_tab_divider"></span>
 
-					<div class="row">
-						<div class="col-md-12">
-							<ul class="nav nav-tabs" id="myTab" role="tablist">
-								<li class="nav-item">
-									<a class="nav-link" id="mainconf-tab" data-toggle="tab" href="#mainconf" role="tab" aria-controls="mainconf" aria-selected="true">
-										Configuración del Proyecto
-									</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" id="mapconf-tab" data-toggle="tab" href="#mapconf" role="tab" aria-controls="mapconf" aria-selected="false">
-										Configuración del Mapa
-									</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link active" id="poiconf-tab" data-toggle="tab" href="#poiconf" role="tab" aria-controls="poiconf" aria-selected="false">
-										Puntos de Interes
-									</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
-										Lineas
-									</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
-										Areas de Dibujo
-									</a>
-								</li>
-							</ul>
-							<div class="tab-content" id="myTabContent">
-									
-
-
-
-
-
-
-
-								<!-- PROJECT CONFIGURATION -->
-								<div class="tab-pane fade" id="mainconf" role="tabpanel" aria-labelledby="mainconf-tab">
-									<div class="col-md-12">
-										<div class="row">
-											<div class="col-md-12">
-												<h3>Configuración del Proyecto</h3>
-											</div>
+								<div id="project_config" class="col s12">
+									<div class="row">
+										<div class="col s12">
+											<h3>Configuración del Proyecto</h3>
 										</div>
-										<div class="row">
-											<form class="col-md-12">
-												<div class="mb-3">
-													<label for="project_title" class="form-label">Nombre del Proyecto</label>
-													<input type="text" class="form-control" value="<?php echo $map_project_data->result()[0]->map_project_title;?>" id="project_title">
+										<form class="col s12">
+											<div class="row">
+												<div class="input-field col s6">
+													<input name="project_title" value="<?php echo $map_project_data->result()[0]->map_project_title;?>" id="project_title" type="text" class="form-label">
+													<label for="project_title">Nombre del Proyecto</label>
 												</div>
-												<div class="mb-3">
-													<label for="project_privacity" class="form-label">Privacidad</label>
-													<select id="project_privacity" class="form-select" aria-label="Default select example">
-													  <option value="1" selected>Publico</option>
-													  <option value="2">Privado</option>
+												<div class="input-field col s6">
+														<select id="project_privacity" class="form-select" aria-label="Default select example">
+														<option value="1" selected>Publico</option>
+														<option value="2">Privado</option>
 													</select>
 												</div>
-												<div class="mb-3">
+												<div class="input-field col s6">
 													<button type="submit" class="btn btn-primary">Guardar</button>
 												</div>
-											</form>
-										</div>	
-									</div>
-								</div>
-								<!-- PROJECT CONFIGURATION END -->
-
-
-
-
-
-
-								<!-- CURRENT MAP CONFIGURATION -->
-								<div class="tab-pane fade" id="mapconf" role="tabpanel" aria-labelledby="mapconf-tab">
-									<div class="col-md-12">
-										<div class="row">
-											<div class="col-md-12">
-												<h3>Configuración del Mapa</h3>
 											</div>
-										</div>
-										<div class="row">
-											<form class="col-md-12">
-												
-												<div class="row">
-													<div class="col-md-6">
-														<div class="row">
-															<div class="col-md-12">
-																<label for="project_title" class="form-label">
-																	Nombre del Mapa
-																</label>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-md-12">
-																<input type="text" class="form-control" value="<?php echo $current_map_title;?>" id="project_title">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="row">
-															<div class="col-md-12">
-																<label for="map_center_lat" class="form-label">
-																	Punto Central de Mapa: Latitud
-																</label>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-md-12">
-																<input type="text" class="form-control" value="<?php echo $current_map_lat;?>" id="map_center_lat">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="row">
-															<div class="col-md-12">
-																<label for="map_center_lng" class="form-label">
-																	Punto Central de Mapa: Longitud
-																</label>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-md-12">
-																<input type="text" class="form-control" value="<?php echo $current_map_lon;?>" id="map_center_lng">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="row">
-															<div class="col-md-12">
-																<label for="project_title" class="form-label">
-																	Punto Central de Mapa: Zoom
-																</label>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-md-12">
-																<input type="text" class="form-control" value="<?php echo $current_map_zoom;?>" id="map_zoom_value">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="row">
-															<div class="col-md-12">
-																<label for="project_title" class="form-label">
-																	Punto Central de Mapa: Max. Zoom
-																</label>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-md-12">
-																<input type="text" class="form-control" value="<?php echo $current_map_maxzoom;?>" id="project_title">
-															</div>
-														</div>
-													</div>
-												</div>
-
-												<div class="row">
-													<div class="col-md-12">
-														<button type="submit" class="btn btn-primary">Guardar</button>
-													</div>
-												</div>
-
-											</form>
-										</div>	
+										</form>
 									</div>
 								</div>
-								<!-- CURRENT MAP CONFIGURATION END -->
 
-
-
-
-
-
-								<!-- POI CONFIGURATION -->
-								<div class="tab-pane fade show active" id="poiconf" role="tabpanel" aria-labelledby="poiconf-tab">
+								<div id="map_config" class="col s12">
 									<div class="row">
-										
-										<?php // POI List ?>
-										<div class="col-md-12">
+										<div class="col s12">
+											<h3>Configuración del Proyecto</h3>
+										</div>
+									</div>
+									<div class="row">
+										<form class="col s12">
+											<div class="input-field col s6">
+												<input name="project_title" value="<?php echo $current_map_title;?>" id="project_title" type="text" class="form-label">
+												<label for="project_title">Nombre del Mapa</label>
+											</div>
+											<div class="input-field col s6">
+												<input name="map_center_lat" value="<?php echo $current_map_lat;?>" id="map_center_lat" type="text" class="form-label">
+												<label for="map_center_lat">Punto Central de Mapa: Latitud</label>
+											</div>
+											<div class="input-field col s6">
+												<input name="map_center_lng" value="<?php echo $current_map_lon;?>" id="map_center_lng" type="text" class="form-label">
+												<label for="map_center_lng">Punto Central de Mapa: Longitud</label>
+											</div>
+											<div class="input-field col s6">
+												<input name="map_zoom_value" value="<?php echo $current_map_zoom;?>" id="map_zoom_value" type="text" class="form-label">
+												<label for="map_zoom_value">Punto Central de Mapa: Zoom</label>
+											</div>
+											<div class="input-field col s6">
+												<input name="map_max_zoom_value" value="<?php echo $current_map_maxzoom;?>" id="map_max_zoom_value" type="text" class="form-label">
+												<label for="map_max_zoom_value">Punto Central de Mapa: Max. Zoom</label>
+											</div>
+											<div class="input-field col s6">
+												<button type="submit" class="btn btn-primary">Guardar</button>
+											</div>
+										</form>
+									</div>
+								</div>
+
+								<div id="poi_config" class="col s12">
+									<div class="row">
+										<div class="col s12">
 											<h3>Puntos de Interes</h3>
-											<ul>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col s12">
+											<ul class="edit_list_poi">
 												<?php foreach ($map_unit_list_assets_poi->result() as $poi_data_set): ?>
-													<li>
-														<i><?php echo $poi_data_set->map_assets_poi_title;?></i> 
-														<a class="edit_poi_action" targetEditPoi="<?php echo $poi_data_set->map_assets_poi_id;?>" href="#">Editar</a>
-														<a href="#">Eliminar</a>
+													<li class="edit_list_poi_element">
+														<ul class="edit_list_poi_inner">
+															<li class="edit_list_poi_name">
+																<?php echo $poi_data_set->map_assets_poi_title;?>
+															</li>
+															<li>
+																<ul class="edit_list_poi_actions">
+																	<li>
+																		<button type="button" class="btn btn-primary edit_poi_action" targetEditPoi="<?php echo $poi_data_set->map_assets_poi_id;?>">Editar</button>
+																	</li>
+																	<li>
+																		<?php echo form_open('MapView/deletepoi');?>
+																			<input type="hidden" name="project_code" id="project_code" value="<?php echo getProjectMapsCodeByProjectMapsID($poi_data_set->map_assets_poi_map_id);?>">
+																			<input type="hidden" name="map_assets_poi_id" id="map_assets_poi_id" value="<?php echo $poi_data_set->map_assets_poi_id;?>">
+																			<button type="submit" class="btn btn-primary">Eliminar</button>
+																		<?php echo form_close();?>
+																	</li>
+																</ul>
+															</li>
+														</ul>
 													</li>
 												<?php endforeach ?>
 											</ul>
@@ -246,217 +165,175 @@
 												Crear Nuevo Punto de Interes
 											</button>
 										</div>
-										<?php // POI List END ?>
+									</div>
+									<br><br><br>
 
-										<?php // POI Creator Form ?>
-										<div class="col-md-12" id="new_poi_form_holder" style="display: none;">
-											<div class="row">
-												<?php echo form_open('MapView/savenewpoi', 'class="col-md-12" id="checkout_form"');?>
-													<input type="hidden" name="project_code" id="project_code" value="<?php echo $map_project_code;?>">
-													<input type="hidden" name="map_assets_poi_map_id" id="map_assets_poi_map_id" value="<?php echo $current_map_ID;?>">
-													<input type="hidden" id="enable_put_newpoi" value="0">
-													<div class="row">
-														<div class="col-md-12">
-															<legend>Crear Nuevo Punto de Interes</legend>
-														</div>
-													</div>
-													<div class="col-md-12">
-														<label for="map_assets_poi_title" class="form-label">
-															Titulo
-														</label>
-														<input type="text" name="map_assets_poi_title" class="form-control" value="" id="map_assets_poi_title">
-													</div>
-													<div class="col-md-12">
-														<div class="row">
-															<div class="col-md-6">
-																<label for="map_assets_poi_lat" class="form-label">
-																	Latitud
-																</label>
-																<input type="text" name="map_assets_poi_lat" class="form-control" value="" id="map_assets_poi_lat">
-															</div>
-															<div class="col-md-6">
-																<label for="map_assets_poi_lng" class="form-label">
-																	Longitud
-																</label>
-																<input type="text" name="map_assets_poi_lng" class="form-control" value="" id="map_assets_poi_lng">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-12">
-														<label for="map_assets_poi_txt" class="form-label">
-															Cuerpo del Texto
-														</label>
-														<textarea class="form-control" name="map_assets_poi_txt" id="map_assets_poi_txt" rows="10"></textarea>
-													</div>
-													<div class="col-md-12">
-														<label for="map_assets_poi_youtube" class="form-label">
-															Codigo de Youtube
-														</label>
-														<input type="text" name="map_assets_poi_youtube" class="form-control" value="" id="map_assets_poi_youtube">
-													</div>
+									<div class="row" id="new_poi_form_holder" class="new_poi_form" style="display: none;">
+										<div class="col s12">
+											<h3>Crear Nuevo Punto de Interes</h3>
+											<?php echo form_open('MapView/savenewpoi', 'class="col s12" id="checkout_form"');?>
+											<input type="hidden" name="project_code" id="project_code" value="<?php echo $map_project_code;?>">
+											<input type="hidden" name="map_assets_poi_map_id" id="map_assets_poi_map_id" value="<?php echo $current_map_ID;?>">
+											<input type="hidden" id="enable_put_newpoi" value="0">
+											<div class="input-field col s6">
+												<input type="text" name="map_assets_poi_title" id="map_assets_poi_title" class="form-label" value="">
+												<label for="map_assets_poi_title">Titulo</label>
+											</div>
+											<div class="input-field col s6">
+												<input type="text" name="map_assets_poi_lat" id="map_assets_poi_lat" class="form-label" value="">
+												<label for="map_assets_poi_lat">Latitud</label>
+											</div>
+											<div class="input-field col s6">
+												<input type="text" name="map_assets_poi_lng" id="map_assets_poi_lng" class="form-label" value="">
+												<label for="map_assets_poi_lng">Longitud</label>
+											</div>
+											<div class="input-field col s6">
+												<input type="text" name="map_assets_poi_youtube" id="map_assets_poi_youtube" class="form-label" value="">
+												<label for="map_assets_poi_youtube">Codigo de Youtube</label>
+											</div>
+											<div class="input-field col s12">
+												<textarea name="map_assets_poi_txt" id="map_assets_poi_txt" class="materialize-textarea"></textarea>
+												<label for="map_assets_poi_txt">Cuerpo del Texto</label>
+											</div>
+											<div class="input-field col s6">
+												<input type="text" name="map_assets_poi_download_path" id="map_assets_poi_download_path" class="form-label" value="">
+												<label for="map_assets_poi_download_path">Pagina de Bibliogafia</label>
+											</div>
+											<div class="input-field col s6">
+												<select name="map_assets_poi_ico" id="map_assets_poi_ico" class="form-select">
+													<option value="1" selected>Marcador</option>
+													<option value="2">Ciudad</option>
+													<option value="3">Castillo</option>
+													<option value="4">Batalla</option>
+													<option value="5">Exclamacion</option>
+													<option value="6">Pregunta</option>
+												</select>
+												<label for="map_assets_poi_ico">Icono</label>
+											</div>
+											<div class="input-field col s6">
+												<button type="submit" class="btn btn-primary">Guardar</button>
+											</div>
+											<?php echo form_close();?>
+										</div>
+									</div>
 
-													<div class="col-md-12">
-														<label for="map_assets_poi_download_path" class="form-label">
-															Pagina de Bibliogafia
-														</label>
-														<input type="text" name="map_assets_poi_download_path" class="form-control" value="" id="map_assets_poi_download_path">
-													</div>
+									<div class="row">
+										<?php foreach ($map_unit_list_assets_poi->result() as $poi_data_set): ?>
+											<div class="col s12 edit_poi_specific_general" id="edit_poi_specific_<?php echo $poi_data_set->map_assets_poi_id;?>" poinumber="<?php echo $poi_data_set->map_assets_poi_id;?>" style="display: none;">
+												<h3>Editar Punto de Interes</h3>
+												<?php echo form_open('MapView/saveeditpoi', 'class="col s12" id="checkout_form"');?>
+												<input type="hidden" name="project_code" id="project_code" value="<?php echo $map_project_code;?>">
+												<input type="hidden" name="map_assets_poi_id" id="map_assets_poi_id" value="<?php echo $poi_data_set->map_assets_poi_id;?>">
+						            <input type="hidden" id="enable_put_newpoi" value="0">
 
-													
-													<div class="col-md-12">
-														<label for="map_assets_poi_ico" class="form-label">
-															Icono
-														</label>
-														<select name="map_assets_poi_ico" id="map_assets_poi_ico" class="form-select">
-														  <option value="1" selected>Marcador</option>
-														  <option value="2">Ciudad</option>
-														  <option value="3">Castillo</option>
-														  <option value="4">Batalla</option>
-														  <option value="5">Exclamacion</option>
-														  <option value="6">Pregunta</option>
-														</select>
-													</div>
-													<div class="col-md-12">
-														<button type="submit" class="btn btn-primary">
-															Guardar
-														</button>
-													</div>
+												<div class="input-field col s6">
+													<input type="text" name="map_assets_poi_title" id="map_assets_poi_title" class="form-label" value="<?php echo $poi_data_set->map_assets_poi_title;?>">
+													<label for="map_assets_poi_title">Titulo</label>
+												</div>
+												<div class="input-field col s6">
+													<input type="text" name="map_assets_poi_lat" id="map_assets_poi_lat" class="form-label" value="<?php echo $poi_data_set->map_assets_poi_lat;?>">
+													<label for="map_assets_poi_lat">Latitud</label>
+												</div>
+												<div class="input-field col s6">
+													<input type="text" name="map_assets_poi_lng" id="map_assets_poi_lng" class="form-label" value="<?php echo $poi_data_set->map_assets_poi_lng;?>">
+													<label for="map_assets_poi_lng">Longitud</label>
+												</div>
+												<div class="input-field col s6">
+													<input type="text" name="map_assets_poi_youtube" id="map_assets_poi_youtube" class="form-label" value="<?php echo $poi_data_set->map_assets_poi_youtube;?>">
+													<label for="map_assets_poi_youtube">Codigo de Youtube</label>
+												</div>
+												<div class="input-field col s12">
+													<textarea name="map_assets_poi_txt" id="map_assets_poi_txt" class="materialize-textarea"><?php echo $poi_data_set->map_assets_poi_txt;?></textarea>
+													<label for="map_assets_poi_txt">Cuerpo del Texto</label>
+												</div>
+												<div class="input-field col s6">
+													<input type="text" name="map_assets_poi_download_path" id="map_assets_poi_download_path" class="form-label" value="<?php echo $poi_data_set->map_assets_poi_download_path;?>">
+													<label for="map_assets_poi_download_path">Pagina de Bibliogafia</label>
+												</div>
+												<div class="input-field col s6">
+													<select name="map_assets_poi_ico" id="map_assets_poi_ico" class="form-select">
+														<option value="1" selected>Marcador</option>
+														<option value="2">Ciudad</option>
+														<option value="3">Castillo</option>
+														<option value="4">Batalla</option>
+														<option value="5">Exclamacion</option>
+														<option value="6">Pregunta</option>
+													</select>
+													<label for="map_assets_poi_ico">Icono</label>
+												</div>
+												<div class="input-field col s6">
+													<button type="submit" class="btn btn-primary">Guardar</button>
+												</div>
 												<?php echo form_close();?>
 											</div>
-										</div>
-										<?php // POI Creator Form END ?>
-
-										<?php // POI Creator Edit Form List ?>
-										<?php foreach ($map_unit_list_assets_poi->result() as $poi_data_set): ?>
-											<!-- <div class="col-md-12 edit_poi_specific_general" id="edit_poi_specific_" style="display: none;"> -->
-											<div class="col-md-12 edit_poi_specific_general" id="edit_poi_specific_<?php echo $poi_data_set->map_assets_poi_id;?>" poinumber="<?php echo $poi_data_set->map_assets_poi_id;?>" style="display: none;">
-												<div class="row">
-													<?php echo form_open('MapView/savenewpoi', 'class="col-md-12" id="checkout_form"');?>
-														<input type="hidden" name="project_code" id="project_code" value="<?php echo $map_project_code;?>">
-														<input type="hidden" id="enable_put_newpoi" value="0">
-														<div class="row">
-															<div class="col-md-12">
-																<legend>Editar Punto de Interes</legend>
-															</div>
-														</div>
-														<div class="col-md-12">
-															<label for="map_assets_poi_title" class="form-label">
-																Titulo
-															</label>
-															<input type="text" name="map_assets_poi_title" class="form-control" value="<?php echo $poi_data_set->map_assets_poi_title;?>" id="map_assets_poi_title">
-														</div>
-														<div class="col-md-12">
-															<div class="row">
-																<div class="col-md-6">
-																	<label for="map_assets_poi_lat" class="form-label">
-																		Latitud
-																	</label>
-																	<input type="text" name="map_assets_poi_lat" class="form-control" value="<?php echo $poi_data_set->map_assets_poi_lat;?>" id="map_assets_poi_lat">
-																</div>
-																<div class="col-md-6">
-																	<label for="map_assets_poi_lng" class="form-label">
-																		Longitud
-																	</label>
-																	<input type="text" name="map_assets_poi_lng" class="form-control" value="<?php echo $poi_data_set->map_assets_poi_lng;?>" id="map_assets_poi_lng">
-																</div>
-															</div>
-														</div>
-														<div class="col-md-12">
-															<label for="map_assets_poi_txt" class="form-label">
-																Cuerpo del Texto
-															</label>
-															<textarea class="form-control" name="map_assets_poi_txt" id="map_assets_poi_txt" rows="10"><?php echo $poi_data_set->map_assets_poi_txt;?></textarea>
-														</div>
-														<div class="col-md-12">
-															<label for="map_assets_poi_youtube" class="form-label">
-																Codigo de Youtube
-															</label>
-															<input type="text" name="map_assets_poi_youtube" class="form-control" value="<?php echo $poi_data_set->map_assets_poi_youtube;?>" id="map_assets_poi_youtube">
-														</div>
-
-														<div class="col-md-12">
-															<label for="map_assets_poi_download_path" class="form-label">
-																Pagina de Bibliogafia
-															</label>
-															<input type="text" name="map_assets_poi_download_path" class="form-control" value="<?php echo $poi_data_set->map_assets_poi_download_path;?>" id="map_assets_poi_download_path">
-														</div>
-														<div class="col-md-12">
-															<label for="map_assets_poi_ico" class="form-label">
-																Icono
-															</label>
-															<select name="map_assets_poi_ico" id="map_assets_poi_ico" class="form-select">
-															  <option value="1" selected>Marcador</option>
-															  <option value="2">Ciudad</option>
-															  <option value="3">Castillo</option>
-															  <option value="4">Batalla</option>
-															  <option value="5">Exclamacion</option>
-															  <option value="6">Pregunta</option>
-															</select>
-														</div>
-														<div class="col-md-12">
-															<button type="button" class="btn btn-primary">
-																Activar Marcador
-															</button>
-															<button type="submit" class="btn btn-primary">
-																Guardar
-															</button>
-														</div>
-													<?php echo form_close();?>
-												</div>
-											</div>
 										<?php endforeach ?>
-										<?php // POI Creator Edit Form List END?>
+									</div>
 
+								</div>
+								<div id="lines_config" class="col s12">
+									<div class="row">
+										<div class="col s12">
+											<h3>Lineas</h3>
+										</div>
+										<div class="col s12">
+											Modulo en Desarrollo
+										</div>
 									</div>
 								</div>
-								<!-- POI CONFIGURATION END -->
-
-
+								<div id="draw_areas_config" class="col s12">
+									<div class="row">
+										<div class="col s12">
+											<h3>Areas de Dibujo</h3>
+										</div>
+										<div class="col s12">
+											Modulo en Desarrollo
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-		<div class="col-md-8">
-			<div id="map" style="position: relative;width: 100%;height: 80vh;"></div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-1"></div>
-		<div class="col-md-11">
-			<div class="row">
-				<div class="col-md-10">
-					<audio controls style="width: 100%;float: left;">
-					  <source src="horse.ogg" type="audio/ogg">
-					  <source src="horse.mp3" type="audio/mpeg">
-					Your browser does not support the audio element.
-					</audio>
-				</div>
-				<div class="col-md-2">
-					<button type="button" class="btn btn-outline-info">Descargar Audio</button>
-					<button type="button" class="btn btn-outline-info">Bibliografia</button>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<p style="text-align: center;">Desarrollado por Leonardo Saia, para la Universidad Nacional de General Sarmiento. 2021</p>
+
+		<div class="row">
+			<div class="col s12">
+				<div class="widget z-depth-1">
+						<div class="loader"></div>
+						<div class="widget-title">
+								<h3>Mapa</h3>
+								<a class="options dropdown-button waves-effect" href="#" title="" data-activates='dropdown3'><i class="ti-more-alt"></i></a>
+						</div>
+						<div class="row">
+							<div class="col s12">
+								<div id="map" style="position: relative;width: 100%;height: 80vh;"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col s12">
+								<audio controls style="width: 100%;float: left;">
+								  <source src="horse.ogg" type="audio/ogg">
+								  <source src="horse.mp3" type="audio/mpeg">
+								Your browser does not support the audio element.
+								</audio>
+							</div>
+							<div class="col s12">
+								<span><button type="button" class="btn btn-primary">Descargar Audio</button></span>
+								<span><button type="button" class="btn btn-primary">Bibliografia</button></span>
+							</div>
+						</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	
+
 </div>
 
 
-
 <script>
-	
+
 
 	$(document).ready(function() {
-		
+
 		// Initial Vars for Rendering Map
 		var lat = <?php echo $current_map_lat;?>;
 		var lng = <?php echo $current_map_lon;?>;
@@ -519,7 +396,7 @@
 		// Central Marker
 		central_marker = L.marker(
 			[
-				lat, 
+				lat,
 				lng
 			], {
 				title: '(Punto Central, este marcador no sera visto en el mapa final)',
@@ -576,8 +453,8 @@
 			// Create POI Engine End
 		}
 
-	});	
-	
+	});
+
 	$('.edit_poi_action').on('click', function() {
 		var poiValue = $(this).attr('targetEditPoi');
 		$('.edit_poi_specific_general').hide();
@@ -608,7 +485,7 @@
 				<div class="modal-body">
 					<?php echo $poi_data_set->map_assets_poi_txt;?>
 					<?php if ($poi_data_set->map_assets_poi_youtube != NULL): ?>
-						<iframe width="100%" height="720" src="https://www.youtube.com/embed/<?php echo $poi_data_set->map_assets_poi_youtube ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>						
+						<iframe width="100%" height="720" src="https://www.youtube.com/embed/<?php echo $poi_data_set->map_assets_poi_youtube ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					<?php endif ?>
 				</div>
 				<div class="modal-footer">

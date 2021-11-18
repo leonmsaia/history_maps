@@ -35,3 +35,72 @@
     z-index: 0;
     position: relative;
 }
+
+.login-form-box form a:last-child {
+    text-align: inherit;
+    width: auto;
+    font-size: inherit;
+    float: inherit;
+    font-weight: bold;
+}
+
+.admin-nav ul.credit_legend li a {
+    float: initial;
+    font-size: inherit!important;
+    padding: inherit;
+    width: auto;
+    display: inherit;
+    margin: auto;
+}
+
+.project_list_container {
+	margin-bottom: 15px;
+	padding-left: 15px!important;
+	font-weight: 500;
+}
+.project_list_container li {
+
+}
+
+.project_manager_tab_divider {
+	float: left;
+	width: 100%;
+	margin-bottom:15px;
+}
+
+.new_poi_form {
+	margin-top: 25px;
+}
+
+.edit_list_poi {
+  width: 100%;
+  float: left;
+  font-size: 1em;
+}
+
+.edit_list_poi .edit_list_poi_element {
+  float: left;
+  padding: 15px;
+}
+
+.edit_list_poi_inner {
+
+}
+.edit_list_poi_name {
+
+}
+.edit_list_poi_actions {
+}
+
+.edit_list_poi_actions li {
+	font-style: italic;
+}
+
+.edit_list_poi_actions li button {
+	padding: 5px 13px;
+	font-size: 0.7em;
+	width: 100%;
+	float: left;
+	height: auto;
+	margin-bottom: 5px;
+}

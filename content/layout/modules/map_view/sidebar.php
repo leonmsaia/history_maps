@@ -23,7 +23,7 @@
           <ul>
             <?php foreach ($map_unit_list_assets_poi->result() as $legend_elemnt): ?>
               <li>
-                <a href="#">
+                <a href="#poi_data_<?php echo $legend_elemnt->map_assets_poi_id;?>">
                   <?php echo $legend_elemnt->map_assets_poi_title;?>
                 </a>
               </li>
@@ -31,16 +31,17 @@
           </ul>
         </li>
       </ul>
-      <ul>
+
+      <ul class="credit_legend">
         <li>
           <span class="copy_holder">
-            Desarrollado por Leonardo Saia.
+            Desarrollado por <a href="https://www.linkedin.com/in/leonmsaia/" target="_blank">Leonardo Saia</a>
             <br>
-            Año 2021.
+            En el Año 2021.
             <br>
-            Catedra Elementos.
+            Catedra EPHOHAYA.
             <br>
-            Universidad Nacional de General Sarmiento
+            <a href="https://www.ungs.edu.ar/" target="_blank">Universidad Nacional de General Sarmiento</a>
             <br><br>
             Codigo Libre, Abierto, Publico y Gratuito.
             <br><br>
